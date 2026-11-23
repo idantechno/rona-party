@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rona Party · מפעילה למשחקי חברה וגיבוש</title>
+<meta name="description" content="מפעילה תותחית למשחקי חברה וגיבוש, כולל איפור וקעקועים היפואלרגניים. הפעלות לכל הגילאים בדגש על גיבוש ללא תחרות. מחירים מפתיעים.">
+<meta name="theme-color" content="#8ED8F8">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:title" content="רונה פארטי · מפעילה תותחית למשחקי חברה וגיבוש">
+<meta property="og:description" content="הפעלות לכל הגילאים בדגש על גיבוש ללא תחרות, כולל איפור וקעקועים היפואלרגניים. מחירים מפתיעים.">
+<meta property="og:image" content="rona-logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap">
+<style>
+/* Layout: poster-style party hero (glossy headline + character), form stage with bunting, bento, manifesto, pink closing bar */
+:root{
+  --sky:#8ED8F8; --sky-2:#CDEFFF; --sky-d:#3FB3E8;
+  --blue:#1F49E0; --blue-d:#1234A8;
+  --orange:#FF8A00; --orange-d:#D35A00;
+  --pink:#FF2D87; --pink-d:#C8106A;
+  --purple:#7B2FD6; --purple-d:#4F1898; --lav:#E6D6FF;
+  --yellow:#FFD21F; --yellow-d:#E0A500;
+  --green:#8BDC2E; --green-d:#4FA614;
+  --ink:#2A0F52; --ink-2:#4B3A6E; --ink-3:#7E719A;
+  --white:#FFFFFF; --cream:#FFFBF2;
+  --hair:rgba(42,15,82,.1);
+  --f-display:"Fredoka","Assistant",system-ui,sans-serif;
+  --f-body:"Assistant",system-ui,sans-serif;
+  --ease:cubic-bezier(.32,.72,0,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--sky-2);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+main{overflow-x:clip}
+img,svg{display:block;max-width:100%}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;text-wrap:balance}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:12px}
+.container{max-width:1280px;margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.rel{position:relative}
+
+/* ---------- glossy bubble type ---------- */
+.gloss{--c:var(--blue);--cd:var(--blue-d);position:relative;display:inline-block;color:var(--c);font-family:var(--f-display);font-weight:700;line-height:1;
+  text-shadow:
+    .05em 0 #fff,-.05em 0 #fff,0 .05em #fff,0 -.05em #fff,.036em .036em #fff,-.036em .036em #fff,.036em -.036em #fff,-.036em -.036em #fff,
+    0 .1em 0 var(--cd),.04em .1em 0 var(--cd),-.04em .1em 0 var(--cd),
+    0 .14em 0 #fff,.05em .12em 0 #fff,-.05em .12em 0 #fff,
+    0 .2em .16em rgba(42,15,82,.35)}
+.gloss::after{content:attr(data-t);position:absolute;inset:0;color:transparent;text-shadow:none;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.75) 0 30%,rgba(255,255,255,0) 46%);-webkit-background-clip:text;background-clip:text}
+.g-orange{--c:var(--orange);--cd:var(--orange-d)}
+.g-pink{--c:var(--pink);--cd:var(--pink-d)}
+.g-yellow{--c:var(--yellow);--cd:var(--yellow-d)}
+.g-purple{--c:var(--purple);--cd:var(--purple-d)}
+
+/* ---------- sky + party decorations ---------- */
+.sky{position:relative;background:radial-gradient(120% 90% at 25% 45%,#E8F8FF 0%,var(--sky) 45%,var(--sky-d) 100%);overflow:hidden;isolation:isolate}
+.rays{position:absolute;width:1800px;height:1800px;left:calc(25% - 900px);top:calc(50% - 900px);z-index:-1;
+  background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.28) 0deg 7deg,rgba(255,255,255,0) 7deg 15deg);
+  -webkit-mask:radial-gradient(circle,#000 0 30%,transparent 62%);mask:radial-gradient(circle,#000 0 30%,transparent 62%);animation:spin 90s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bunting{position:absolute;top:0;inset-inline:0;height:84px;z-index:2;pointer-events:none}
+.bunting svg{width:100%;height:100%}
+.spark{position:absolute;z-index:1;color:#fff;pointer-events:none;animation:twinkle var(--t,2.6s) var(--dl,0s) ease-in-out infinite}
+@keyframes twinkle{0%,100%{transform:scale(.5) rotate(0);opacity:.35}50%{transform:scale(1) rotate(25deg);opacity:1}}
+.balloon{position:absolute;z-index:1;pointer-events:none;animation:bob var(--t,7s) var(--dl,0s) ease-in-out infinite;transform-origin:50% 100%}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-22px) rotate(4deg)}}
+.confetti{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.confetti i{position:absolute;top:-30px;display:block;border-radius:2px;animation:fall var(--t,9s) var(--dl,0s) linear infinite}
+@keyframes fall{0%{transform:translate3d(0,-40px,0) rotate(0)}100%{transform:translate3d(var(--x,30px),110vh,0) rotate(720deg)}}
+.streamer{position:absolute;z-index:1;pointer-events:none}
+
+/* ---------- nav island ---------- */
+.nav{position:fixed;top:calc(14px + env(safe-area-inset-top, 0px));inset-inline:0;z-index:40;display:flex;justify-content:center;pointer-events:none;padding-inline:16px}
+.nav-in{pointer-events:auto;display:flex;align-items:center;gap:clamp(14px,4vw,40px);padding:7px;padding-inline-start:20px;border-radius:999px;
+  background:rgba(255,255,255,.82);backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);
+  box-shadow:0 0 0 3px rgba(255,255,255,.6),0 16px 36px -18px rgba(42,15,82,.45)}
+.logo{direction:ltr;display:flex;align-items:center;font-family:var(--f-display);font-weight:700;font-size:26px;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.logo .ring{width:.66em;height:.66em;border-radius:50%;margin:.12em .04em 0;background:conic-gradient(var(--pink) 0 25%,var(--yellow) 0 50%,var(--green) 0 75%,var(--blue) 0);
+  -webkit-mask:radial-gradient(circle,transparent 30%,#000 31%);mask:radial-gradient(circle,transparent 30%,#000 31%);animation:spin 12s linear infinite}
+.logo small{font-size:.42em;font-weight:600;letter-spacing:.28em;color:var(--pink);margin-left:.5em;padding-top:.15em}
+
+/* ---------- buttons ---------- */
+.btn{--bg:var(--ink);--bd:#12052a;--fg:#fff;--chip:rgba(255,255,255,.2);
+  display:inline-flex;align-items:center;justify-content:space-between;gap:14px;border:0;cursor:pointer;border-radius:999px;padding:8px;padding-inline-start:26px;
+  background:var(--bg);color:var(--fg);font-family:var(--f-display);font-weight:600;font-size:19px;line-height:1.15;text-align:start;
+  box-shadow:0 0 0 4px #fff,0 6px 0 4px var(--bd),0 18px 28px -10px rgba(42,15,82,.45);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.btn .chip{width:44px;height:44px;border-radius:50%;background:var(--chip);display:grid;place-items:center;flex:none;transition:transform .55s var(--spring)}
+.btn svg{width:22px;height:22px}
+.btn:hover{transform:translateY(-3px)}
+.btn:hover .chip{transform:translateX(-4px) scale(1.08) rotate(-8deg)}
+.btn:active{transform:translateY(3px);box-shadow:0 0 0 4px #fff,0 2px 0 4px var(--bd),0 8px 16px -8px rgba(42,15,82,.45)}
+.btn.wa{--bg:#25D366;--bd:#139447;--fg:#fff}
+.btn.pink{--bg:var(--pink);--bd:var(--pink-d)}
+.btn.blue{--bg:var(--blue);--bd:var(--blue-d)}
+.btn.light{--bg:#fff;--bd:#B8C4E8;--fg:var(--ink);--chip:var(--sky-2)}
+.btn.sm{font-size:16px;padding:6px;padding-inline-start:18px;gap:10px;box-shadow:0 0 0 3px #fff,0 4px 0 3px var(--bd),0 12px 20px -10px rgba(42,15,82,.4)}
+.btn.sm .chip{width:34px;height:34px}
+.btn.sm svg{width:18px;height:18px}
+
+/* ---------- badges ---------- */
+.cloud-badge{position:relative;display:inline-grid;place-items:center;width:fit-content;padding:22px 36px 26px;transform:rotate(-7deg)}
+.cloud-badge svg.bg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 0 var(--pink-d)) drop-shadow(0 12px 14px rgba(42,15,82,.3))}
+.cloud-badge span{position:relative;font-family:var(--f-display);font-weight:700;color:#fff;font-size:clamp(28px,3vw,40px);line-height:1}
+.wiggle{animation:wig 3.2s var(--ease) infinite}
+@keyframes wig{0%,100%{transform:rotate(-7deg) scale(1)}8%{transform:rotate(-2deg) scale(1.06)}16%{transform:rotate(-10deg) scale(1)}24%{transform:rotate(-7deg)}}
+
+.ribbon{position:relative;display:inline-flex;align-items:center;gap:14px;background:linear-gradient(180deg,#FF5AA2,var(--pink));color:#fff;
+  font-family:var(--f-display);font-weight:600;font-size:clamp(22px,2.5vw,34px);line-height:1;padding:14px 30px;border-radius:999px;
+  box-shadow:0 0 0 5px #fff,0 7px 0 5px var(--pink-d),0 18px 26px -10px rgba(42,15,82,.4)}
+.ribbon svg{width:.9em;height:.9em;color:var(--yellow);flex:none}
+
+.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.checks li{display:flex;align-items:center;gap:14px;width:fit-content;max-width:100%;padding:10px 26px 10px 12px;padding-inline-start:12px;border-radius:999px;
+  font-family:var(--f-display);font-weight:600;font-size:clamp(19px,1.9vw,25px);line-height:1.2;color:var(--purple-d);
+  box-shadow:0 0 0 4px #fff,0 6px 0 4px var(--cd,#d9b000),0 14px 22px -10px rgba(42,15,82,.3);background:var(--cb,#FFE34D)}
+.checks li .ck{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none;box-shadow:inset 0 -3px 0 rgba(42,15,82,.12)}
+.checks li .ck svg{width:24px;height:24px;color:var(--pink)}
+.checks li:nth-child(1){--cb:linear-gradient(180deg,#FFF07A,#FFD21F);--cd:#D9A600}
+.checks li:nth-child(2){--cb:linear-gradient(180deg,#CFF58A,#8BDC2E);--cd:#5BAE1B}
+.checks li:nth-child(3){--cb:linear-gradient(180deg,#F1E6FF,#D6BDFF);--cd:#A982E8}
+
+.price-cloud{position:relative;display:grid;place-items:center;text-align:center;padding:38px 46px 46px;width:fit-content}
+.price-cloud svg.bg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 0 #fff) drop-shadow(0 8px 0 var(--purple-d)) drop-shadow(0 18px 20px rgba(42,15,82,.35))}
+.price-cloud small{position:relative;display:block;font-family:var(--f-display);font-weight:600;color:#fff;font-size:clamp(22px,2.2vw,30px);line-height:1;margin-bottom:6px}
+.price-cloud .num{position:relative;font-size:clamp(46px,5vw,74px)}
+.pnum{position:relative;display:inline-flex;align-items:baseline;gap:.04em;direction:ltr}
+.num.cur{font-size:.55em}
+.price-cloud .num.cur{font-size:clamp(34px,3.8vw,54px)}
+.burst{position:relative;display:grid;place-items:center;padding:26px 34px;width:fit-content;transform:rotate(-6deg)}
+.burst svg.bg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 0 var(--yellow-d)) drop-shadow(0 12px 14px rgba(42,15,82,.25))}
+.burst .gloss{font-size:clamp(30px,3.2vw,46px)}
+
+/* ---------- hero ---------- */
+.hero{padding-top:calc(118px + env(safe-area-inset-top, 0px));padding-bottom:clamp(70px,8vw,110px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-areas:"top char" "bottom char";column-gap:clamp(24px,4vw,64px);row-gap:28px;align-items:center;position:relative;z-index:3}
+.logo-img{display:block;line-height:0}
+.logo-img img{height:44px;width:auto;filter:drop-shadow(0 2px 2px rgba(42,15,82,.18))}
+.foot-logo img{height:56px}
+.brand-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hero-logo{width:clamp(200px,22vw,320px);height:auto;filter:drop-shadow(0 0 0 #fff) drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(0 14px 16px rgba(42,15,82,.3));animation:popin .9s var(--spring) both}
+.h-top{grid-area:top;display:flex;flex-direction:column;align-items:flex-start;gap:18px;align-self:end}
+.h-bottom{grid-area:bottom;display:flex;flex-direction:column;align-items:flex-start;gap:26px;align-self:start}
+.h-char{grid-area:char;position:relative;min-width:0;align-self:center;display:flex;align-items:center;justify-content:center}
+.hero h1{display:flex;flex-direction:column;align-items:flex-start;gap:.06em;font-size:clamp(58px,8.4vw,128px);margin-top:4px}
+.hero h1 .gloss{transform-origin:right center}
+.hero h1 .l1{animation:popin .9s .1s var(--spring) both}
+.hero h1 .l2{animation:popin .9s .25s var(--spring) both}
+@keyframes popin{from{transform:scale(.6) rotate(-4deg);opacity:0}to{transform:none;opacity:1}}
+.deal{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cta-row{display:flex;flex-wrap:wrap;gap:20px 18px;align-items:center;padding-top:6px}
+
+.char-wrap{position:relative;width:min(100%,540px);aspect-ratio:1069/1240}
+.char-glow{position:absolute;inset:6% -6% 10% -6%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 0 30%,rgba(255,255,255,0) 68%)}
+.char-sun{position:absolute;width:78%;aspect-ratio:1;left:11%;top:12%;border-radius:50%;background:radial-gradient(circle at 38% 32%,#FFF3A6,var(--yellow) 60%,#FFB800);box-shadow:0 0 0 10px rgba(255,255,255,.7),0 0 0 22px rgba(255,255,255,.3)}
+.char-fx{position:absolute;inset:0;filter:drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 5px 0 #fff) drop-shadow(0 -5px 0 #fff) drop-shadow(0 20px 22px rgba(42,15,82,.3));animation:sway 6s ease-in-out infinite;transform-origin:50% 100%}
+.char{position:absolute;inset:0;background:url("rona-character.webp") center top / contain no-repeat;
+  -webkit-mask-image:linear-gradient(to bottom,#000 86%,transparent 100%);mask-image:linear-gradient(to bottom,#000 86%,transparent 100%)}
+@keyframes sway{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1.2deg) translateY(-6px)}}
+.char-note{position:absolute;bottom:3%;inset-inline-end:-6%;z-index:2}
+
+/* ---------- marquee band ---------- */
+.band{background:var(--purple);color:#fff;padding-block:20px;overflow:hidden;transform:rotate(-1.4deg);margin-block:-26px;margin-inline:-30px;position:relative;z-index:5;
+  box-shadow:0 0 0 6px #fff,0 16px 30px -14px rgba(42,15,82,.5)}
+.track{display:flex;width:max-content;animation:marq 30s linear infinite}
+.track span{display:flex;align-items:center;gap:26px;padding-inline-end:26px;font-family:var(--f-display);font-weight:600;font-size:clamp(22px,2.6vw,32px);white-space:nowrap}
+.track svg{width:28px;height:28px;flex:none;color:var(--yellow)}
+@keyframes marq{to{transform:translateX(50%)}}
+
+/* ---------- form stage ---------- */
+.form-sec{background:linear-gradient(180deg,#FFF6D9 0%,#FFE9F3 100%);padding-block:clamp(110px,12vw,170px) clamp(90px,10vw,140px);position:relative;overflow:hidden;isolation:isolate}
+.form-sec .dots{position:absolute;inset:0;z-index:-1;opacity:.5;background-image:radial-gradient(rgba(255,45,135,.22) 2.5px,transparent 3px);background-size:34px 34px}
+.form-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,80px);align-items:center}
+.form-copy{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.form-copy h2{font-size:clamp(46px,6vw,84px);display:flex;flex-direction:column;gap:.08em;align-items:flex-start}
+.form-copy p{font-size:20px;color:var(--ink-2);max-width:34ch}
+.party-props{display:flex;align-items:flex-end;gap:10px;margin-top:8px}
+.card{position:relative;background:#fff;border-radius:36px;padding:clamp(24px,3vw,40px);
+  box-shadow:0 0 0 8px rgba(255,255,255,.9),0 0 0 12px var(--pink),0 0 0 18px #fff,0 40px 70px -30px rgba(42,15,82,.45)}
+.card .tag{position:absolute;top:-30px;inset-inline-end:28px;z-index:2}
+.card-bunt{position:absolute;top:0;inset-inline:24px;height:46px;pointer-events:none}
+.card-bunt svg{width:100%;height:100%}
+.form-head{display:flex;flex-direction:column;gap:4px;margin:30px 0 20px}
+.form-head h3{font-size:clamp(28px,2.6vw,36px);color:var(--purple-d)}
+.form-head p{color:var(--ink-3);font-size:17px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.field.full{grid-column:1 / -1}
+.field label{font-size:15px;font-weight:700}
+.field label span{font-weight:500;color:var(--ink-3)}
+.field input,.field select,.field textarea{width:100%;border:0;border-radius:18px;background:#F6F2FF;padding:14px 16px;font-size:17px;
+  box-shadow:inset 0 0 0 2px #E7DEFF;transition:box-shadow .35s var(--ease),background-color .35s var(--ease);appearance:none;-webkit-appearance:none}
+.field textarea{resize:vertical;min-height:86px}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%232A0F52' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 16px center;padding-left:40px}
+.field input::placeholder,.field textarea::placeholder{color:#A99CC4}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;background:#fff;box-shadow:inset 0 0 0 3px var(--purple),0 10px 24px -14px rgba(123,47,214,.6)}
+.field .err{font-size:14px;color:var(--pink-d);font-weight:700}
+.field.invalid input,.field.invalid select{box-shadow:inset 0 0 0 3px var(--pink)}
+.form-actions{display:flex;flex-direction:column;gap:18px;margin-top:24px}
+.form-actions .btn{width:100%}
+.or{display:flex;align-items:center;gap:12px;color:var(--ink-3);font-size:15px;font-weight:600}
+.or::before,.or::after{content:"";flex:1;height:2px;border-radius:2px;background:#EEE6FF}
+.fine{font-size:13.5px;color:var(--ink-3);text-align:center}
+.success{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:40px 6px 20px}
+.success .tick{width:96px;height:96px;border-radius:50%;background:var(--green);display:grid;place-items:center;box-shadow:0 0 0 6px #fff,0 6px 0 6px var(--green-d);animation:pop .7s var(--spring)}
+.success .tick svg{width:46px;height:46px;color:#fff}
+.success h3{font-size:34px;color:var(--purple-d)}
+.success p{color:var(--ink-2);max-width:30ch}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* ---------- section shell ---------- */
+.section{padding-block:clamp(90px,11vw,150px);position:relative}
+.sec-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;margin-bottom:clamp(44px,5vw,70px)}
+.sec-head h2{font-size:clamp(40px,5.4vw,72px)}
+.sec-head p{color:var(--ink-2);font-size:20px;max-width:46ch}
+
+/* ---------- bento ---------- */
+.inc{background:var(--cream);overflow:hidden;isolation:isolate}
+.inc::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.55;background-image:radial-gradient(rgba(31,73,224,.16) 2.5px,transparent 3px);background-size:34px 34px}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(260px,auto);gap:26px}
+.tile{position:relative;overflow:hidden;border-radius:34px;padding:clamp(26px,3vw,40px);display:flex;flex-direction:column;justify-content:flex-end;gap:10px;min-width:0;isolation:isolate;
+  box-shadow:0 0 0 6px #fff,0 9px 0 6px var(--td,#ccc),0 30px 50px -26px rgba(42,15,82,.45);transition:transform .7s var(--spring)}
+.tile:hover{transform:translateY(-8px) rotate(-.6deg)}
+.tile h3{font-size:clamp(30px,2.9vw,42px);position:relative;z-index:1}
+.tile p{font-size:18px;max-width:30ch;position:relative;z-index:1;font-weight:500}
+.tile .art{position:absolute;inset-block-start:clamp(22px,3vw,34px);inset-inline-end:clamp(22px,3vw,34px);z-index:0}
+.tile .tr{position:absolute;inset:-40%;z-index:-1;background:repeating-conic-gradient(rgba(255,255,255,.14) 0 8deg,transparent 8deg 18deg);animation:spin 60s linear infinite}
+.t-a{grid-column:span 7;grid-row:span 2;background:linear-gradient(160deg,#3D6BFF,var(--blue));color:#fff;--td:var(--blue-d)}
+.t-b{grid-column:span 5;background:linear-gradient(160deg,#FFE766,var(--yellow));--td:var(--yellow-d);color:var(--ink)}
+.t-c{grid-column:span 5;background:linear-gradient(160deg,#F3EAFF,#D9C4FF);--td:#A982E8}
+.t-d{grid-column:span 5;background:linear-gradient(160deg,#FF6AAE,var(--pink));color:#fff;--td:var(--pink-d)}
+.t-e{grid-column:span 7;background:linear-gradient(160deg,#9550F0,var(--purple));color:#fff;--td:var(--purple-d);flex-direction:row;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.t-a h3{font-size:clamp(38px,4.2vw,60px)}
+.t-a .art{inset:0;display:grid;place-items:center;padding-bottom:min(42%,230px)}
+.orbit{width:min(60%,300px);aspect-ratio:1;position:relative;animation:spin 36s linear infinite}
+.orbit i{position:absolute;width:16%;height:16%;border-radius:50%;top:50%;left:50%;margin:-8% 0 0 -8%;transform:rotate(calc(var(--k) * 45deg)) translateY(-230%);box-shadow:0 0 0 4px #fff}
+.orbit i:nth-child(4n+1){background:var(--yellow)}.orbit i:nth-child(4n+2){background:var(--pink)}.orbit i:nth-child(4n+3){background:var(--green)}.orbit i:nth-child(4n){background:var(--orange)}
+.orbit::before{content:"";position:absolute;inset:14%;border-radius:50%;border:4px dashed rgba(255,255,255,.5)}
+.orbit-core{position:absolute;inset:34%;border-radius:50%;background:#fff;display:grid;place-items:center;animation:spin 36s linear infinite reverse;box-shadow:0 8px 0 rgba(0,0,0,.12)}
+.orbit-core svg{width:62%;height:62%}
+.t-e .pinfo{display:flex;flex-direction:column;gap:8px;min-width:0}
+.t-e .pinfo small{font-family:var(--f-display);font-size:22px;font-weight:600;color:#fff}
+.t-e .num{font-size:clamp(46px,5.2vw,76px)}
+.t-e .num.cur{font-size:clamp(40px,4.4vw,64px)}
+.t-e p{max-width:32ch}
+
+/* ---------- manifesto ---------- */
+.mani-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center;position:relative;z-index:3}
+.mani h2{font-size:clamp(52px,7.4vw,118px);display:flex;flex-direction:column;align-items:flex-start;gap:.08em}
+.mani-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+.mani-list li{display:grid;grid-template-columns:62px 1fr;gap:18px;align-items:center;padding:18px 22px;border-radius:28px;background:rgba(255,255,255,.92);
+  box-shadow:0 0 0 4px #fff,0 18px 30px -18px rgba(42,15,82,.4)}
+.mani-list .ic{width:62px;height:62px;border-radius:20px;display:grid;place-items:center;box-shadow:inset 0 -5px 0 rgba(0,0,0,.14)}
+.mani-list b{display:block;font-family:var(--f-display);font-weight:600;font-size:22px;line-height:1.2;margin-bottom:2px;color:var(--purple-d)}
+.mani-list span{color:var(--ink-2);font-size:17px}
+
+/* ---------- closing ---------- */
+.closing{background:var(--cream);padding-block:clamp(110px,12vw,170px) clamp(80px,9vw,120px);position:relative;overflow:hidden}
+.close-bar{position:relative;border-radius:999px;background:linear-gradient(180deg,#FF5AA2,var(--pink));color:#fff;padding:clamp(26px,3.4vw,44px) clamp(28px,5vw,70px);
+  display:flex;align-items:center;justify-content:space-between;gap:24px 40px;flex-wrap:wrap;
+  box-shadow:0 0 0 8px #fff,0 12px 0 8px var(--pink-d),0 40px 60px -26px rgba(42,15,82,.5)}
+.close-bar h2{font-size:clamp(30px,3.6vw,52px);color:#fff;text-shadow:0 4px 0 var(--pink-d)}
+.close-bar p{font-size:19px;opacity:.95;margin-top:8px}
+.close-bar .acts{display:flex;gap:18px;flex-wrap:wrap}
+.props-l,.props-r{position:absolute;bottom:clamp(10px,2vw,30px);z-index:2;pointer-events:none}
+.props-l{inset-inline-start:max(10px,2vw)}
+.props-r{inset-inline-end:max(10px,2vw)}
+
+footer{background:var(--cream);padding-block:30px calc(40px + env(safe-area-inset-bottom, 0px))}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:var(--ink-3);font-size:15px;border-top:2px dashed #EADFC8;padding-top:26px}
+
+/* ---------- mobile dock ---------- */
+.dock{position:fixed;inset-inline:0;bottom:0;z-index:40;padding:12px max(12px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));display:none;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 -2px 0 rgba(255,45,135,.25);transform:translateY(120%);transition:transform .6s var(--ease)}
+.dock.show{transform:none}
+.dock-in{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dock .btn{font-size:15.5px;min-width:0;width:100%;padding-inline-start:14px;gap:8px}
+
+/* ---------- reveal ---------- */
+.js .rv{opacity:0;transform:translateY(40px) scale(.97);transition:opacity .9s var(--ease),transform 1s var(--spring);transition-delay:calc(var(--d,0) * 90ms)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;grid-template-areas:"top" "char" "bottom";justify-items:center;text-align:center}
+  .h-top,.h-bottom{align-items:center}
+  .brand-row{justify-content:center}
+  .hero h1{align-items:center}
+  .char-wrap{width:min(86%,440px)}
+  .checks li{margin-inline:auto}
+  .cta-row,.deal{justify-content:center}
+  .form-grid,.mani-grid{grid-template-columns:1fr}
+  .form-copy{align-items:center;text-align:center}
+  .form-copy h2{align-items:center}
+}
+@media (max-width:768px){
+  body{font-size:17px}
+  .hero{padding-top:calc(104px + env(safe-area-inset-top, 0px))}
+  .bento{grid-template-columns:1fr;grid-auto-rows:auto}
+  .t-a,.t-b,.t-c,.t-d,.t-e{grid-column:auto;grid-row:auto;min-height:270px}
+  .t-a{min-height:540px}
+  .t-a .art{padding-bottom:220px}
+  .orbit{width:min(70%,260px)}
+  .fields{grid-template-columns:1fr}
+  .nav-wa-label{display:none}
+  .dock{display:block}
+  footer{padding-bottom:calc(120px + env(safe-area-inset-bottom, 0px))}
+  .close-bar{border-radius:40px;justify-content:center;text-align:center}
+  .close-bar .acts{justify-content:center;width:100%}
+  .props-l,.props-r{display:none}
+  .hide-m{display:none}
+  .price-cloud{padding:30px 36px 38px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+  .confetti{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="shine" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset=".35" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path fill="currentColor" d="M9.1 7.6c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.2s.9 2.5 1 2.7c.2.2 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.7-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.8-.7-1.3-1.5-1.4-1.7-.2-.3 0-.4.1-.5l.4-.5.3-.4v-.4l-.9-2Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m6-6-6 6 6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m-6-6 6 6 6-6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6l-6.4 3.5L7 14l-5.3-5 7.2-.9z"/></symbol>
+  <symbol id="spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.8 6.4 4.6 10.6 12 12-7.4 1.4-11.2 5.6-12 12-.8-6.4-4.6-10.6-12-12C7.4 10.6 11.2 6.4 12 0Z"/></symbol>
+  <symbol id="cloud" viewBox="0 0 200 120"><path d="M40 112 C14 112 4 92 14 74 C-2 58 12 30 38 36 C42 10 74 2 92 20 C104 0 140 2 148 26 C172 16 196 36 186 60 C202 76 192 106 166 108 C150 122 120 120 108 110 C92 122 58 122 40 112Z"/></symbol>
+  <symbol id="burst" viewBox="0 0 200 120"><path d="M100 2 L116 22 L142 8 L146 34 L176 30 L166 54 L198 62 L172 78 L188 102 L158 102 L156 120 L128 108 L100 120 L74 106 L44 118 L44 98 L12 100 L28 78 L2 62 L32 52 L22 28 L54 32 L58 6 L84 20Z"/></symbol>
+  <symbol id="balloon" viewBox="0 0 80 150"><path d="M40 98 C40 112 30 118 38 128 C46 138 34 144 40 150" fill="none" stroke="#fff" stroke-width="1.8" opacity=".9"/><ellipse cx="40" cy="44" rx="34" ry="42" fill="currentColor"/><path d="M34 86 L46 86 L42 95 L38 95Z" fill="currentColor"/><ellipse cx="40" cy="44" rx="34" ry="42" fill="url(#shine)"/><ellipse cx="27" cy="26" rx="7" ry="12" fill="#fff" opacity=".55" transform="rotate(-25 27 26)"/></symbol>
+  <symbol id="cake" viewBox="0 0 160 150"><g><rect x="74" y="8" width="0" height="0"/>
+    <rect x="44" y="18" width="7" height="26" rx="3" fill="#FF2D87"/><rect x="62" y="12" width="7" height="32" rx="3" fill="#1F49E0"/><rect x="80" y="12" width="7" height="32" rx="3" fill="#FFD21F"/><rect x="98" y="18" width="7" height="26" rx="3" fill="#8BDC2E"/>
+    <path d="M47 6c4 4 4 9 0 11c-4-2-4-7 0-11ZM65 0c4 4 4 9 0 11c-4-2-4-7 0-11ZM83 0c4 4 4 9 0 11c-4-2-4-7 0-11ZM101 6c4 4 4 9 0 11c-4-2-4-7 0-11Z" fill="#FF8A00"/>
+    <rect x="30" y="44" width="100" height="40" rx="14" fill="#FFF2F8"/><path d="M30 58 Q42 70 54 58 T78 58 T102 58 T130 58 V54 H30Z" fill="#FF6AAE"/>
+    <rect x="14" y="84" width="132" height="54" rx="16" fill="#FFF2F8"/><path d="M14 98 Q28 112 42 98 T70 98 T98 98 T126 98 T146 98 V94 H14Z" fill="#FF6AAE"/>
+    <circle cx="40" cy="120" r="4" fill="#1F49E0"/><circle cx="66" cy="114" r="4" fill="#FFD21F"/><circle cx="92" cy="122" r="4" fill="#8BDC2E"/><circle cx="118" cy="114" r="4" fill="#7B2FD6"/><circle cx="60" cy="72" r="3.5" fill="#FFD21F"/><circle cx="96" cy="70" r="3.5" fill="#1F49E0"/>
+    <ellipse cx="80" cy="142" rx="74" ry="8" fill="#fff"/></g></symbol>
+  <symbol id="gift" viewBox="0 0 120 120"><rect x="10" y="44" width="100" height="72" rx="10" fill="currentColor"/><rect x="4" y="30" width="112" height="24" rx="8" fill="currentColor"/><rect x="4" y="30" width="112" height="24" rx="8" fill="#fff" opacity=".25"/><rect x="52" y="30" width="16" height="86" fill="#FFD21F"/><path d="M60 30 C40 6 18 14 30 28 C36 34 50 32 60 30 C70 32 84 34 90 28 C102 14 80 6 60 30Z" fill="#FFD21F"/><rect x="10" y="44" width="100" height="72" rx="10" fill="url(#shine)" opacity=".6"/></symbol>
+  <symbol id="flower" viewBox="0 0 64 64"><g fill="currentColor"><circle cx="32" cy="14" r="10"/><circle cx="32" cy="50" r="10"/><circle cx="14" cy="32" r="10"/><circle cx="50" cy="32" r="10"/><circle cx="19.3" cy="19.3" r="10"/><circle cx="44.7" cy="44.7" r="10"/><circle cx="44.7" cy="19.3" r="10"/><circle cx="19.3" cy="44.7" r="10"/><circle cx="32" cy="32" r="14"/></g></symbol>
+  <symbol id="streamer" viewBox="0 0 60 140"><path d="M30 2 C 6 18, 54 30, 30 46 S 6 74, 30 90 S 54 118, 30 138" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></symbol>
+</svg>
+
+<nav class="nav" aria-label="ראשי">
+  <div class="nav-in">
+    <a href="#top" class="logo-img" aria-label="רונה פארטי, לראש העמוד"><img src="rona-logo.webp" width="1292" height="680" alt="רונה פארטי"></a>
+    <a class="btn wa sm js-wa" href="#" target="_blank" rel="noopener"><span class="nav-wa-label">וואטסאפ</span><span class="chip"><svg><use href="#i-wa"/></svg></span></a>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero sky" data-party>
+    <div class="rays" aria-hidden="true"></div>
+    <div class="bunting" aria-hidden="true" data-bunting="22"></div>
+    <div class="confetti" aria-hidden="true" data-confetti="34"></div>
+    <svg class="balloon" style="top:110px;inset-inline-start:2%;width:78px;color:#FFD21F;--t:7s" aria-hidden="true"><use href="#balloon"/></svg>
+    <svg class="balloon" style="top:170px;inset-inline-start:7%;width:62px;color:#FF2D87;--t:8.5s;--dl:-2s" aria-hidden="true"><use href="#balloon"/></svg>
+    <svg class="balloon hide-m" style="top:90px;inset-inline-end:3%;width:84px;color:#7B2FD6;--t:7.5s;--dl:-1s" aria-hidden="true"><use href="#balloon"/></svg>
+    <svg class="balloon hide-m" style="top:190px;inset-inline-end:1%;width:66px;color:#8BDC2E;--t:9s;--dl:-3s" aria-hidden="true"><use href="#balloon"/></svg>
+    <svg class="streamer hide-m" style="top:260px;inset-inline-end:44%;width:34px;color:#FF2D87;transform:rotate(20deg)" aria-hidden="true"><use href="#streamer"/></svg>
+    <svg class="streamer" style="bottom:60px;inset-inline-start:46%;width:28px;color:#FFD21F;transform:rotate(-30deg)" aria-hidden="true"><use href="#streamer"/></svg>
+    <div data-sparks="16" aria-hidden="true"></div>
+
+    <div class="container hero-grid">
+      <div class="h-top">
+        <div class="brand-row">
+        <img class="hero-logo" src="rona-logo.webp" width="1292" height="680" alt="רונה פארטי">
+        <div class="cloud-badge wiggle" aria-label="חדש">
+          <svg class="bg" viewBox="0 0 200 120" preserveAspectRatio="none" aria-hidden="true" style="color:#FF2D87"><use href="#cloud" fill="#fff" transform="translate(-6 -6) scale(1.06)"/><use href="#cloud" fill="#FF2D87"/></svg>
+          <span>חדש!</span>
+        </div>
+        </div>
+        <h1>
+          <span class="gloss l1" data-t="מפעילה">מפעילה</span>
+          <span class="gloss g-orange l2" data-t="תותחית">תותחית</span>
+        </h1>
+        <span class="ribbon"><svg><use href="#star"/></svg>למשחקי חברה וגיבוש<svg><use href="#star"/></svg></span>
+      </div>
+
+      <div class="h-char" aria-hidden="true">
+        <div class="char-wrap">
+          <div class="char-glow"></div>
+          <div class="char-sun"></div>
+          <div class="char-fx"><div class="char"></div></div>
+          <svg class="char-note" width="130" height="122" viewBox="0 0 160 150"><use href="#cake"/></svg>
+        </div>
+      </div>
+
+      <div class="h-bottom">
+        <ul class="checks">
+          <li><span class="ck"><svg><use href="#i-check"/></svg></span>הפעלות לכל הגילאים</li>
+          <li><span class="ck"><svg><use href="#i-check"/></svg></span>גיבוש ללא תחרות</li>
+          <li><span class="ck"><svg><use href="#i-check"/></svg></span>כולל איפור וקעקועים היפואלרגניים</li>
+        </ul>
+        <div class="deal">
+          <div class="burst">
+            <svg class="bg" viewBox="0 0 200 120" preserveAspectRatio="none" aria-hidden="true"><use href="#burst" fill="#fff" transform="translate(-8 -6) scale(1.08)"/><use href="#burst" fill="#FFE34D"/></svg>
+            <span class="gloss g-pink" data-t="שמח וכיף!">שמח וכיף!</span>
+          </div>
+          <div class="price-cloud">
+            <svg class="bg" viewBox="0 0 200 120" preserveAspectRatio="none" aria-hidden="true"><use href="#cloud" fill="#fff" transform="translate(-7 -6) scale(1.07)"/><use href="#cloud" fill="#8A3BEA"/></svg>
+            <small>מחירים</small>
+            <span class="gloss g-yellow num" data-t="מפתיעים!">מפתיעים!</span>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="btn wa js-wa" href="#" target="_blank" rel="noopener">לכתוב לי בוואטסאפ<span class="chip"><svg><use href="#i-wa"/></svg></span></a>
+          <a class="btn light" href="#lead">להשאיר פרטים<span class="chip"><svg><use href="#i-down"/></svg></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND -->
+  <div class="band" aria-hidden="true">
+    <div class="track">
+      <span>משחקי חברה<svg><use href="#star"/></svg>גיבוש בלי תחרות<svg><use href="#spark"/></svg>איפור וקעקועים היפואלרגניים<svg><use href="#star"/></svg>לכל הגילאים<svg><use href="#spark"/></svg>שמח וכיף<svg><use href="#star"/></svg>מחירים מפתיעים<svg><use href="#spark"/></svg></span>
+      <span>משחקי חברה<svg><use href="#star"/></svg>גיבוש בלי תחרות<svg><use href="#spark"/></svg>איפור וקעקועים היפואלרגניים<svg><use href="#star"/></svg>לכל הגילאים<svg><use href="#spark"/></svg>שמח וכיף<svg><use href="#star"/></svg>מחירים מפתיעים<svg><use href="#spark"/></svg></span>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <section class="form-sec" id="lead">
+    <div class="dots" aria-hidden="true"></div>
+    <svg class="balloon" style="top:90px;inset-inline-end:3%;width:70px;color:#1F49E0;--t:8s" aria-hidden="true"><use href="#balloon"/></svg>
+    <svg class="balloon hide-m" style="bottom:120px;inset-inline-start:2%;width:64px;color:#FF8A00;--t:7s;--dl:-2s" aria-hidden="true"><use href="#balloon"/></svg>
+    <div class="container form-grid">
+      <div class="form-copy rv">
+        <h2><span class="gloss g-purple" data-t="בואו נתאם">בואו נתאם</span><span class="gloss g-pink" data-t="הפעלה!">הפעלה!</span></h2>
+        <p>משאירים פרטים ואחזור אליכם בהקדם, או כותבים לי ישר בוואטסאפ.</p>
+        <div class="party-props" aria-hidden="true">
+          <svg width="150" height="140" viewBox="0 0 160 150"><use href="#cake"/></svg>
+          <svg width="86" height="86" viewBox="0 0 120 120" style="color:#1F49E0"><use href="#gift"/></svg>
+          <svg width="66" height="66" viewBox="0 0 120 120" style="color:#FF2D87"><use href="#gift"/></svg>
+        </div>
+      </div>
+
+      <div class="card rv" style="--d:1">
+        <div class="card-bunt" aria-hidden="true" data-bunting="11" data-small></div>
+        <div class="tag cloud-badge" style="padding:16px 28px 20px" aria-hidden="true">
+          <svg class="bg" viewBox="0 0 200 120" preserveAspectRatio="none"><use href="#cloud" fill="#fff" transform="translate(-6 -6) scale(1.06)"/><use href="#cloud" fill="#FF2D87"/></svg>
+          <span style="font-size:22px">מחירים מפתיעים!</span>
+        </div>
+        <form id="leadForm" novalidate>
+          <div class="form-head">
+            <h3>השאירו פרטים</h3>
+            <p>לוקח פחות מדקה.</p>
+          </div>
+          <div class="fields">
+            <div class="field">
+              <label for="f-name">שם</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="איך קוראים לך?">
+              <span class="err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="f-phone">טלפון</label>
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="050-0000000" dir="ltr" style="text-align:right">
+              <span class="err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="f-type">סוג האירוע</label>
+              <select id="f-type" name="type">
+                <option value="">בחירה</option>
+                <option>יום הולדת</option>
+                <option>גיבוש כיתתי או קבוצתי</option>
+                <option>אירוע משפחתי</option>
+                <option>אירוע לחברה או לארגון</option>
+                <option>אחר</option>
+              </select>
+              <span class="err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="f-date">תאריך <span>(לא חובה)</span></label>
+              <input id="f-date" name="date" type="date">
+            </div>
+            <div class="field full">
+              <label for="f-note">משהו שכדאי שאדע? <span>(לא חובה)</span></label>
+              <textarea id="f-note" name="note" rows="2" placeholder="גיל הילדים, כמה משתתפים, איפה האירוע"></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn pink" type="submit">שליחת פרטים<span class="chip"><svg><use href="#i-arrow"/></svg></span></button>
+            <div class="or">או</div>
+            <a class="btn wa js-wa" href="#" target="_blank" rel="noopener">לדבר איתי ישר בוואטסאפ<span class="chip"><svg><use href="#i-wa"/></svg></span></a>
+            <p class="fine">הפרטים משמשים רק כדי לחזור אליכם.</p>
+          </div>
+        </form>
+        <div class="success" id="success" hidden>
+          <div class="tick"><svg><use href="#i-check"/></svg></div>
+          <h3>איזה כיף, קיבלתי!</h3>
+          <p>נשאר רק לשלוח לי את הפרטים בוואטסאפ, ואני חוזרת אליך בהקדם.</p>
+          <a class="btn wa" id="waSend" href="#" target="_blank" rel="noopener">לשלוח את הפרטים בוואטסאפ<span class="chip"><svg><use href="#i-wa"/></svg></span></a>
+          <button class="btn light sm" type="button" id="again">לחזור לטופס<span class="chip"><svg><use href="#i-arrow"/></svg></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section inc">
+    <div class="container">
+      <div class="sec-head">
+        <span class="ribbon rv" style="font-size:22px;padding:10px 24px"><svg><use href="#star"/></svg>מה כלול בהפעלה<svg><use href="#star"/></svg></span>
+        <h2 class="rv" style="--d:1"><span class="gloss" data-t="הכל בחבילה אחת">הכל בחבילה אחת</span></h2>
+        <p class="rv" style="--d:2">הפעלה שמחה שמחברת בין הילדים, עם איפור וקעקועים לכולם, במחיר שמפתיע לטובה.</p>
+      </div>
+
+      <div class="bento">
+        <article class="tile t-a rv">
+          <span class="tr" aria-hidden="true"></span>
+          <div class="art" aria-hidden="true">
+            <div class="orbit">
+              <i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i>
+              <div class="orbit-core"><svg viewBox="0 0 24 24" style="color:#FFD21F"><use href="#star"/></svg></div>
+            </div>
+          </div>
+          <h3>משחקי חברה וגיבוש</h3>
+          <p>משחקים שמחברים את כל הקבוצה: שיתוף פעולה, צחוק והרבה תנועה. כל ילד מרגיש חלק.</p>
+        </article>
+
+        <article class="tile t-b rv" style="--d:1">
+          <svg class="art" width="100" height="100" viewBox="0 0 64 64" aria-hidden="true" style="color:#FF2D87;animation:spin 16s linear infinite"><use href="#flower"/></svg>
+          <h3>איפור וקעקועים</h3>
+          <p>היפואלרגניים ועדינים לעור של ילדים. כלולים בהפעלה.</p>
+        </article>
+
+        <article class="tile t-c rv" style="--d:2">
+          <svg class="art" width="70" height="132" viewBox="0 0 80 150" aria-hidden="true" style="color:#7B2FD6;animation:bob 6s ease-in-out infinite"><use href="#balloon"/></svg>
+          <h3 style="color:#4F1898">לכל הגילאים</h3>
+          <p>ההפעלה מותאמת לגיל הקבוצה, מהקטנטנים ועד הגדולים.</p>
+        </article>
+
+        <article class="tile t-d rv" style="--d:1">
+          <svg class="art" width="90" height="90" viewBox="0 0 24 24" aria-hidden="true" style="color:#FFD21F;animation:twinkle 2.6s ease-in-out infinite"><use href="#spark"/></svg>
+          <h3>גיבוש בלי תחרות</h3>
+          <p>אף אחד לא מודח ואף אחד לא מפסיד. כולם משחקים יחד עד הסוף.</p>
+        </article>
+
+        <article class="tile t-e rv" style="--d:2">
+          <span class="tr" aria-hidden="true"></span>
+          <div class="pinfo">
+            <small>והכי חשוב</small>
+            <span class="gloss g-yellow num" data-t="מחירים מפתיעים!">מחירים מפתיעים!</span>
+            <p>הפעלה מלאה, כולל איפור וקעקועים היפואלרגניים. כתבו לי ותשמעו.</p>
+          </div>
+          <a class="btn wa js-wa" href="#" target="_blank" rel="noopener">לתפוס תאריך<span class="chip"><svg><use href="#i-wa"/></svg></span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="section mani sky">
+    <div class="rays" aria-hidden="true" style="left:calc(20% - 900px)"></div>
+    <div data-sparks="10" aria-hidden="true"></div>
+    <svg class="balloon hide-m" style="top:60px;inset-inline-start:4%;width:70px;color:#FF2D87;--t:8s" aria-hidden="true"><use href="#balloon"/></svg>
+    <div class="container mani-grid">
+      <h2 class="rv"><span class="gloss" data-t="פה אף אחד">פה אף אחד</span><span class="gloss g-pink" data-t="לא מפסיד!">לא מפסיד!</span></h2>
+      <ul class="mani-list">
+        <li class="rv" style="--d:1"><span class="ic" style="background:#1F49E0"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9" r="3" fill="#fff"/><circle cx="16" cy="9" r="3" fill="#FFD21F"/><path d="M3 19a5 5 0 0 1 10 0M11 19a5 5 0 0 1 10 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span><div><b>משחקים ביחד, לא אחד נגד השני</b><span>המשחקים בנויים על שיתוף פעולה, כך שהקבוצה מצליחה רק כשכולם משתתפים.</span></div></li>
+        <li class="rv" style="--d:2"><span class="ic" style="background:#FFD21F"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="#2A0F52" stroke-width="2"/><path d="M8.5 13.5a4 4 0 0 0 7 0" fill="none" stroke="#2A0F52" stroke-width="2" stroke-linecap="round"/><circle cx="9.5" cy="10" r="1.2" fill="#2A0F52"/><circle cx="14.5" cy="10" r="1.2" fill="#2A0F52"/></svg></span><div><b>כל ילד מרגיש שייך</b><span>גם הביישנים, גם הקטנים. אין מי שנשאר בצד.</span></div></li>
+        <li class="rv" style="--d:3"><span class="ic" style="background:#FF2D87"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true" style="color:#fff"><use href="#star"/></svg></span><div><b>שמח וכיף מההתחלה עד הסוף</b><span>אנרגיה טובה, צחוק, ואיפור וקעקועים שנשארים למזכרת.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <div class="bunting" aria-hidden="true" data-bunting="22"></div>
+    <div class="container rel">
+      <div class="close-bar rv">
+        <div>
+          <h2>מתאמים את ההפעלה הבאה?</h2>
+          <p>לפרטים השאירו פרטים או כתבו לי בוואטסאפ.</p>
+        </div>
+        <div class="acts">
+          <a class="btn wa js-wa" href="#" target="_blank" rel="noopener">וואטסאפ<span class="chip"><svg><use href="#i-wa"/></svg></span></a>
+          <a class="btn light" href="#lead">השארת פרטים<span class="chip"><svg><use href="#i-arrow"/></svg></span></a>
+        </div>
+      </div>
+    </div>
+    <svg class="props-l" width="140" height="130" viewBox="0 0 160 150" aria-hidden="true"><use href="#cake"/></svg>
+    <svg class="props-r" width="90" height="90" viewBox="0 0 120 120" aria-hidden="true" style="color:#FF2D87"><use href="#gift"/></svg>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <a href="#top" class="logo-img foot-logo"><img src="rona-logo.webp" width="1292" height="680" alt="רונה פארטי"></a>
+    <span>הפעלות ואירועים לילדים · © <span id="yr">2026</span></span>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <div class="dock-in">
+    <a class="btn light sm" href="#lead">השארת פרטים<span class="chip"><svg><use href="#i-down"/></svg></span></a>
+    <a class="btn wa sm js-wa" href="#" target="_blank" rel="noopener">וואטסאפ<span class="chip"><svg><use href="#i-wa"/></svg></span></a>
+  </div>
+</div>
+
+<script>
+/* ===== הגדרות: להחליף למספר האמיתי בפורמט בינלאומי, בלי + ובלי 0 בהתחלה (למשל 972501234567) ===== */
+const WHATSAPP_NUMBER = "972500000000";
+const DEFAULT_MSG = "היי! הגעתי מהדף של Rona Party ואשמח לשמוע פרטים על הפעלה לגיבוש עם איפור וקעקועים.";
+
+document.documentElement.classList.add("js");
+const waLink = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+document.querySelectorAll(".js-wa").forEach(a => a.href = waLink(DEFAULT_MSG));
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+/* ----- party decorations ----- */
+const COLORS = ["#FF2D87","#FFD21F","#1F49E0","#8BDC2E","#7B2FD6","#FF8A00","#3FC8F5"];
+const NS = "http://www.w3.org/2000/svg";
+const rnd = (a, b) => a + Math.random() * (b - a);
+
+document.querySelectorAll("[data-bunting]").forEach(el => {
+  const n = +el.dataset.bunting, small = el.hasAttribute("data-small");
+  const W = 1200, sag = small ? 26 : 46, flagW = W / n * .78, flagH = small ? 28 : 46;
+  let s = `<svg viewBox="0 0 ${W} ${sag + flagH + 8}" preserveAspectRatio="none"><path d="M0 4 Q ${W/2} ${sag*2} ${W} 4" fill="none" stroke="#fff" stroke-width="3"/>`;
+  for (let i = 0; i < n; i++) {
+    const t = (i + .5) / n, x = t * W, y = 4 + 2 * (1 - t) * t * (sag * 2 - 4) * 1;
+    s += `<path d="M${x - flagW/2} ${y} L${x + flagW/2} ${y} L${x} ${y + flagH}Z" fill="${COLORS[i % COLORS.length]}" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>`;
+  }
+  el.innerHTML = s + "</svg>";
+});
+
+document.querySelectorAll("[data-sparks]").forEach(el => {
+  const n = +el.dataset.sparks;
+  for (let i = 0; i < n; i++) {
+    const s = document.createElementNS(NS, "svg");
+    const size = rnd(12, 30);
+    s.setAttribute("class", "spark"); s.setAttribute("viewBox", "0 0 24 24");
+    s.style.cssText = `width:${size}px;height:${size}px;top:${rnd(4, 94)}%;left:${rnd(2, 97)}%;--t:${rnd(1.8, 3.6)}s;--dl:${rnd(-3, 0)}s;${Math.random() < .25 ? "color:#FFE34D" : ""}`;
+    s.innerHTML = '<use href="#spark"/>';
+    el.parentElement.appendChild(s);
+  }
+  el.remove();
+});
+
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.querySelectorAll("[data-confetti]").forEach(el => {
+    const n = +el.dataset.confetti;
+    for (let i = 0; i < n; i++) {
+      const c = document.createElement("i");
+      const w = rnd(7, 13), round = Math.random() < .3;
+      c.style.cssText = `left:${rnd(0, 100)}%;width:${w}px;height:${round ? w : w * rnd(1.6, 2.4)}px;background:${COLORS[i % COLORS.length]};${round ? "border-radius:50%;" : ""}--t:${rnd(7, 14)}s;--dl:${rnd(-14, 0)}s;--x:${rnd(-80, 80)}px`;
+      el.appendChild(c);
+    }
+  });
+}
+
+/* reveal */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+}, { threshold: .1, rootMargin: "0px 0px -5% 0px" });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+/* mobile dock appears after the hero CTA */
+const dock = document.getElementById("dock");
+new IntersectionObserver(([e]) => dock.classList.toggle("show", !e.isIntersecting && e.boundingClientRect.top < 0), { threshold: 0 })
+  .observe(document.querySelector(".hero .cta-row"));
+
+/* form */
+const form = document.getElementById("leadForm");
+const success = document.getElementById("success");
+const setErr = (input, msg) => {
+  const f = input.closest(".field");
+  f.classList.toggle("invalid", !!msg);
+  f.querySelector(".err").textContent = msg || "";
+  input.setAttribute("aria-invalid", msg ? "true" : "false");
+};
+const validPhone = (v) => { const d = v.replace(/\D/g, "").replace(/^972/, "0"); return /^0(5\d{8}|[2-9]\d{7})$/.test(d); };
+
+form.addEventListener("submit", (ev) => {
+  ev.preventDefault();
+  const name = form.name.value.trim(), phone = form.phone.value.trim(), type = form.type.value;
+  let ok = true, first = null;
+  [[form.name, name.length < 2 ? "נשמח לדעת איך לפנות אליך" : ""],
+   [form.phone, !validPhone(phone) ? "צריך מספר טלפון תקין, למשל 050-1234567" : ""],
+   [form.type, !type ? "בחרו את סוג האירוע" : ""]].forEach(([el, msg]) => {
+    setErr(el, msg); if (msg) { ok = false; first = first || el; }
+  });
+  if (!ok) { first.focus(); return; }
+
+  const lines = ["היי! השארתי פרטים בדף של Rona Party:", `שם: ${name}`, `טלפון: ${phone}`, `סוג האירוע: ${type}`];
+  if (form.date.value) lines.push(`תאריך: ${form.date.value.split("-").reverse().join("/")}`);
+  if (form.note.value.trim()) lines.push(`פרטים נוספים: ${form.note.value.trim()}`);
+  const url = waLink(lines.join("\n"));
+  document.getElementById("waSend").href = url;
+  try { window.open(url, "_blank", "noopener"); } catch (e) {}
+
+  form.hidden = true; success.hidden = false;
+});
+["name","phone","type"].forEach(n => form[n].addEventListener("input", () => setErr(form[n], "")));
+document.getElementById("again").addEventListener("click", () => { success.hidden = true; form.hidden = false; form.reset(); });
+</script>
+</body>
+</html>
